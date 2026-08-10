@@ -60,7 +60,11 @@ pnpm add image-size-next
 
 ### Force transitive dependency replacement
 
-If another package depends on vulnerable `image-size`, override it (npm 8.3+):
+When **other packages** in your project depend on vulnerable `image-size` (you do not import it yourself), force every resolution of `image-size` to this fork. The public API matches, so nested dependencies keep working without code changes.
+
+Add the block below to the **root** `package.json`, then reinstall.
+
+#### npm (8.3+)
 
 ```json
 {
@@ -70,7 +74,13 @@ If another package depends on vulnerable `image-size`, override it (npm 8.3+):
 }
 ```
 
-Yarn:
+```bash
+rm -rf node_modules package-lock.json
+npm install
+npm ls image-size
+```
+
+#### Yarn (Classic / Berry)
 
 ```json
 {
@@ -80,7 +90,18 @@ Yarn:
 }
 ```
 
-pnpm:
+```bash
+# Yarn Classic
+rm -rf node_modules yarn.lock
+yarn install
+yarn why image-size
+
+# Yarn Berry (v2+)
+yarn install
+yarn why image-size
+```
+
+#### pnpm
 
 ```json
 {
@@ -91,6 +112,41 @@ pnpm:
   }
 }
 ```
+
+```bash
+rm -rf node_modules pnpm-lock.yaml
+pnpm install
+pnpm why image-size
+```
+
+After install, `npm ls image-size` / `yarn why` / `pnpm why` should show `image-size-next` (aliased as `image-size`), not the vulnerable `image-size@2.0.2` from the registry.
+
+### Keep the `image-size` import path (alias)
+
+If you want `import … from 'image-size'` (or nested `require('image-size')`) without renaming every import, install this package under the original name:
+
+```bash
+# npm
+npm install image-size@npm:image-size-next@2.1.0
+
+# Yarn
+yarn add image-size@npm:image-size-next@2.1.0
+
+# pnpm
+pnpm add image-size@npm:image-size-next@2.1.0
+```
+
+That writes a dependency like:
+
+```json
+{
+  "dependencies": {
+    "image-size": "npm:image-size-next@2.1.0"
+  }
+}
+```
+
+For full coverage of **transitive** deps, still add the `overrides` / `resolutions` block from the previous section.
 
 ## Usage
 
@@ -197,7 +253,7 @@ See [SECURITY.md](./SECURITY.md) for reporting vulnerabilities and the list of f
 [MIT](./LICENSE)
 
 - Original work: Copyright © 2013–2025 Aditya Yadav and contributors
-- This fork: Copyright © 2026 [lcf2212dev](https://github.com/lcf2212dev)
+- This fork: Copyright © 2026 lcf2212dev · [GitHub](https://github.com/lcf2212dev) · [X](https://x.com/lcf2212dev)
 
 ## Credits
 
