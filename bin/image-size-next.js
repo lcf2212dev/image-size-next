@@ -8,7 +8,7 @@ const { imageSizeFromFile } = require('../dist/fromFile.cjs')
 const files = process.argv.slice(2)
 
 if (!files.length) {
-  console.error('Usage: image-size image1 [image2] [image3] ...')
+  console.error('Usage: image-size-next image1 [image2] [image3] ...')
   process.exit(-1)
 }
 
@@ -28,7 +28,7 @@ files.forEach(async (image) => {
       const result = await imageSizeFromFile(image)
       const sizes = result.images || [result]
       sizes.forEach((size) => {
-        const type = size.type ?? result.type;
+        const type = size.type ?? result.type
         const greyType = type ? colorize(` (${type})`, grey) : ''
         console.info(
           colorize(size.width, green) +

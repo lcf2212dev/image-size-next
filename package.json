@@ -1,7 +1,7 @@
 {
-  "name": "image-size",
-  "version": "2.0.2",
-  "description": "get dimensions of any image file",
+  "name": "image-size-next",
+  "version": "2.1.1",
+  "description": "Community-maintained fork of image-size: get dimensions of any image file or buffer. Fixes CVE-2025-71329 and CVE-2025-71330 (DoS via infinite loops).",
   "main": "./dist/index.cjs",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
@@ -39,22 +39,25 @@
   },
   "files": [
     "dist",
-    "bin/image-size.js"
+    "bin/image-size-next.js",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
   ],
   "engines": {
-    "node": ">=16.x"
+    "node": ">=18"
   },
-  "packageManager": "yarn@4.0.2",
-  "bin": "bin/image-size.js",
+  "bin": {
+    "image-size-next": "bin/image-size-next.js"
+  },
   "scripts": {
     "lint": "biome check lib specs",
     "format": "biome format --write lib specs",
     "test": "TS_NODE_PROJECT=tsconfig.test.json c8 --reporter=text --reporter=lcov node --require ts-node/register --test --test-reporter=dot specs/*.spec.ts",
     "test:watch": "TS_NODE_PROJECT=tsconfig.test.json node --require ts-node/register --test --watch specs/*.spec.ts",
     "clean": "rm -rf dist docs",
-    "generate-docs": "typedoc",
     "build": "tsup",
-    "prepack": "yarn clean && yarn build"
+    "prepublishOnly": "npm run clean && npm run build && npm test"
   },
   "keywords": [
     "image",
@@ -63,6 +66,11 @@
     "resolution",
     "width",
     "height",
+    "image-size",
+    "image-size-next",
+    "security",
+    "cve-2025-71329",
+    "cve-2025-71330",
     "avif",
     "bmp",
     "cur",
@@ -82,9 +90,16 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git://github.com/image-size/image-size.git"
+    "url": "git+https://github.com/lcf2212dev/image-size-next.git"
   },
-  "author": "netroy <aditya@netroy.in> (http://netroy.in/)",
+  "bugs": {
+    "url": "https://github.com/lcf2212dev/image-size-next/issues"
+  },
+  "homepage": "https://github.com/lcf2212dev/image-size-next#readme",
+  "author": "lcf2212dev (https://github.com/lcf2212dev)",
+  "contributors": [
+    "Aditya Yadav <aditya@netroy.in> (original image-size author)"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@biomejs/biome": "1.9.4",
@@ -94,11 +109,6 @@
     "glob": "10.4.2",
     "ts-node": "10.9.2",
     "tsup": "8.3.5",
-    "typedoc": "0.25.13",
     "typescript": "5.4.5"
-  },
-  "nyc": {
-    "include": "lib",
-    "exclude": "specs/*.spec.ts"
   }
 }
