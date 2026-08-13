@@ -26,8 +26,8 @@ export function imageSize(input: Uint8Array): ISizeCalculationResult {
       throw new TypeError(`disabled file type: ${type}`)
     }
 
-    // find an appropriate handler for this file type
-    const size = typeHandlers.get(type)!.calculate(input)
+    const handler = typeHandlers.get(type)
+    const size = handler?.calculate(input)
     if (size !== undefined) {
       size.type = size.type ?? type
 
