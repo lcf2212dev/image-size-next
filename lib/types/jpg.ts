@@ -120,6 +120,10 @@ export const JPG: IImage = {
       // read length of the next block
       const i = readUInt16BE(input, 0)
 
+      if (i < 2) {
+        throw new TypeError('Corrupt JPG, invalid segment length')
+      }
+
       // ensure correct format
       validateInput(input, i)
 
