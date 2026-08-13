@@ -12,13 +12,12 @@
 
 This repository includes the original `image-size` git history. The `v2.1.1` tag is based on upstream [`v2.0.2`](https://github.com/image-size/image-size/releases/tag/v2.0.2).
 
-Compare the fork delta:
+Compare the fork delta (this repo includes the original `v2.0.2` commit):
 
-https://github.com/image-size/image-size/compare/v2.0.2...lcf2212dev:image-size-next:v2.1.1
+https://github.com/lcf2212dev/image-size-next/compare/v2.0.2...v2.1.1
 
 ```bash
-git remote add upstream https://github.com/image-size/image-size.git
-git fetch upstream --tags
+git fetch --tags
 git diff v2.0.2..v2.1.1
 ```
 

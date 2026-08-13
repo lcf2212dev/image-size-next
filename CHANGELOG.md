@@ -13,7 +13,7 @@ All notable changes to this project will be documented in this file.
 - Git history is now based on upstream `image-size@v2.0.2`, so this release is a real descendant of the original repository.
 - Restored upstream comments and format-spec documentation in source.
 - Restored fixture globs (`specs/images/valid/**/*.*` and `invalid/**/*.*`) and fail CI if they match nothing.
-- Compare: https://github.com/image-size/image-size/compare/v2.0.2...lcf2212dev:image-size-next:v2.1.1
+- Compare: https://github.com/lcf2212dev/image-size-next/compare/v2.0.2...v2.1.1
 
 
 ## [2.1.0] - 2026-08-10
