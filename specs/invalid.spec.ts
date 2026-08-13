@@ -7,6 +7,13 @@ import { imageSizeFromFile } from '../lib/fromFile'
 describe('Invalid Images', () => {
   const invalidFiles = globSync('specs/images/invalid/**/*.*')
 
+  it('discovers invalid fixture images (glob must not be empty)', () => {
+    assert.ok(
+      invalidFiles.length > 0,
+      'expected specs/images/invalid/**/*.* to match fixture files',
+    )
+  })
+
   for (const file of invalidFiles) {
     describe(file, () => {
       it('should callback with error when called asynchronously', async () => {

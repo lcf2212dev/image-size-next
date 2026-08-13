@@ -147,6 +147,13 @@ describe('Valid images', () => {
     (file) => extname(file) !== '.md',
   )
 
+  it('discovers fixture images (glob must not be empty)', () => {
+    assert.ok(
+      validFiles.length > 0,
+      'expected specs/images/valid/**/*.* to match fixture files',
+    )
+  })
+
   for (const file of validFiles) {
     const filepath = resolve(file)
     const buffer = readFileSync(filepath)
