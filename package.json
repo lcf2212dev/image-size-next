@@ -1,18 +1,20 @@
 {
-  "name": "image-size",
-  "version": "1.2.1",
-  "description": "get dimensions of any image file",
+  "name": "image-size-next",
+  "version": "1.2.2",
+  "description": "Community-maintained 1.x line of image-size with CVE-2025-71329 / CVE-2025-71330 fixed. For Metro and other image-size@^1.x consumers.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
     "dist",
-    "bin/image-size.js"
+    "bin/image-size-next.js"
   ],
   "engines": {
     "node": ">=16.x"
   },
   "packageManager": "yarn@4.0.2",
-  "bin": "bin/image-size.js",
+  "bin": {
+    "image-size-next": "bin/image-size-next.js"
+  },
   "scripts": {
     "lint": "eslint bin lib specs",
     "format": "prettier --write lib specs eslint.config.mjs",
@@ -46,8 +48,18 @@
     "tiff",
     "webp"
   ],
-  "repository": "git://github.com/image-size/image-size.git",
-  "author": "netroy <aditya@netroy.in> (http://netroy.in/)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lcf2212dev/image-size-next.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lcf2212dev/image-size-next/issues"
+  },
+  "homepage": "https://github.com/lcf2212dev/image-size-next#readme",
+  "author": "lcf2212dev (https://github.com/lcf2212dev)",
+  "contributors": [
+    "Aditya Yadav <aditya@netroy.in> (original image-size author)"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@eslint/js": "9.5.0",
