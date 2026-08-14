@@ -8,6 +8,22 @@
 > **Not affiliated** with the original `image-size` maintainer. The upstream GitHub repository was archived; this package continues maintenance and ships security fixes for open DoS issues.
 
 
+
+## 1.x line (Metro)
+
+Metro depends on `image-size@^1.0.2`. That line is published as **`image-size-next@1.2.2`** (npm dist-tag **`legacy`**, **not** `latest`).
+
+- Compare vs upstream 1.2.1: https://github.com/lcf2212dev/image-size-next/compare/v1.2.1...v1.2.2
+- Install: `npm i image-size-next@1.2.2` or `npm i image-size-next@legacy`
+
+```json
+{
+  "resolutions": {
+    "image-size": "npm:image-size-next@1.2.2"
+  }
+}
+```
+
 ## Diff vs upstream
 
 This repository includes the original `image-size` git history. The `v2.1.1` tag is based on upstream [`v2.0.2`](https://github.com/image-size/image-size/releases/tag/v2.0.2).
