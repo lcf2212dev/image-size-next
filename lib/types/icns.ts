@@ -11,6 +11,7 @@ import { toUTF8String, readUInt32BE } from './utils'
  */
 const SIZE_HEADER = 4 + 4 // 8
 const FILE_LENGTH_OFFSET = 4 // MSB => BIG ENDIAN
+const MIN_ENTRY_LENGTH = 8
 
 /**
  * Image Entry
@@ -89,25 +90,33 @@ export const ICNS: IImage = {
     const fileLength = readUInt32BE(input, FILE_LENGTH_OFFSET)
     let imageOffset = SIZE_HEADER
 
-    let imageHeader = readImageHeader(input, imageOffset)
-    let imageSize = getImageSize(imageHeader[0])
-    imageOffset += imageHeader[1]
-
-    if (imageOffset === fileLength) return imageSize
-
-    const result = {
-      height: imageSize.height,
-      images: [imageSize],
-      width: imageSize.width,
-    }
+    const images: ISize[] = []
 
     while (imageOffset < fileLength && imageOffset < inputLength) {
-      imageHeader = readImageHeader(input, imageOffset)
-      imageSize = getImageSize(imageHeader[0])
-      imageOffset += imageHeader[1]
-      result.images.push(imageSize)
+      if (inputLength - imageOffset < MIN_ENTRY_LENGTH) break
+
+      const imageHeader = readImageHeader(input, imageOffset)
+      const entryLength = imageHeader[1]
+      if (entryLength < MIN_ENTRY_LENGTH) break
+
+      const imageSize = getImageSize(imageHeader[0])
+      if (imageSize.width && imageSize.height) {
+        images.push(imageSize)
+      }
+
+      const nextOffset = imageOffset + entryLength
+      if (nextOffset <= imageOffset) break
+      imageOffset = nextOffset
     }
 
-    return result
+    if (images.length === 0) {
+      throw new TypeError('Invalid ICNS, no sizes found')
+    }
+
+    return {
+      width: images[0].width,
+      height: images[0].height,
+      ...(images.length > 1 ? { images } : {}),
+    }
   },
 }

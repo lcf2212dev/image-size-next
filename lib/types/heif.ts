@@ -28,8 +28,11 @@ export const HEIF: IImage = {
     const metaBox = findBox(input, 'meta', 0)
     const iprpBox = metaBox && findBox(input, 'iprp', metaBox.offset + 12)
     const ipcoBox = iprpBox && findBox(input, 'ipco', iprpBox.offset + 8)
-    const ispeBox = ipcoBox && findBox(input, 'ispe', ipcoBox.offset + 8)
-    if (ispeBox) {
+    const ispeBox =
+      ipcoBox &&
+      ipcoBox.size >= 8 &&
+      findBox(input, 'ispe', ipcoBox.offset + 8)
+    if (ispeBox && ispeBox.size >= 8) {
       return {
         height: readUInt32BE(input, ispeBox.offset + 16),
         width: readUInt32BE(input, ispeBox.offset + 12),
