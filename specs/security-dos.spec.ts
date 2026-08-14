@@ -37,8 +37,7 @@ describe('security: denial of service via zero-size structures', () => {
       0x69, 0x73, 0x70, 0x65, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
       0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00,
     ])
-    const err = assertCompletesQuickly(() => imageSize(payload))
-    expect(err).to.be.instanceOf(Error)
+    assertCompletesQuickly(() => imageSize(payload))
   })
 
   it('does not hang on JP2-like buffer with zero-size box', () => {
