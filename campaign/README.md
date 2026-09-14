@@ -29,7 +29,8 @@ campaign/
 
 | Metric | Value |
 |--------|------:|
-| npm dependent packages | **2072** |
+| npm Dependents tab | **2874** (includes unpublished / noise; not all are live packages) |
+| ecosyste.ms inventory (2026-09-14) | **2065** |
 | Batches of 20 | **104** |
 | GitHub repos | 1572 |
 | **Contactable** (Discussion / Issue / existing thread) | **~1015** |
