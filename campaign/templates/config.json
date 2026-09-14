@@ -1,0 +1,37 @@
+{
+  "package_name": "image-size-next",
+  "npm_url": "https://www.npmjs.com/package/image-size-next",
+  "github_url": "https://github.com/lcf2212dev/image-size-next",
+  "hub_discussion_url": "https://github.com/lcf2212dev/image-size-next/discussions/3",
+  "x_announce_url": "https://x.com/lcf2212dev/status/2086886635791081634",
+  "cves": [
+    "CVE-2025-71329",
+    "CVE-2025-71330"
+  ],
+  "ghsa": [
+    "GHSA-5p2g-fcmc-qvqq",
+    "GHSA-w3rx-r6r6-pgpr"
+  ],
+  "upstream_package": "image-size",
+  "discussion_title": "Security: vulnerable dependency image-size (CVE-2025-71329/71330) — maintained drop-in available",
+  "issue_title": "Security: vulnerable dependency image-size (CVE-2025-71329/71330) — maintained drop-in available",
+  "lines": {
+    "1": {
+      "fork_version": "1.2.2",
+      "upstream_version": "1.2.1",
+      "dist_tag": "legacy",
+      "compare_url": "https://github.com/lcf2212dev/image-size-next/compare/v1.2.1...v1.2.2",
+      "api_note": "CJS sync API (Metro / React Native / image-size 1.x). Do not replace with 2.x."
+    },
+    "2": {
+      "fork_version": "2.1.1",
+      "upstream_version": "2.0.2",
+      "dist_tag": "latest",
+      "compare_url": "https://github.com/lcf2212dev/image-size-next/compare/v2.0.2...v2.1.1",
+      "api_note": "ESM+CJS image-size 2.x API. Do not use this pin on Metro / 1.x trees."
+    }
+  },
+  "default_major": "2",
+  "daily_write_cap": 5,
+  "write_pacing_s": 300
+}
