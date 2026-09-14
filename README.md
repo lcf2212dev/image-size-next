@@ -11,7 +11,7 @@
 
 ## 1.x line (Metro)
 
-Metro depends on `image-size@^1.0.2`. That line is published as **`image-size-next@1.2.2`** (npm dist-tag **`legacy`**, **not** `latest`).
+Metro historically depended on `image-size@^1.0.2` (resolved **1.2.1**, still vulnerable). That line is published as **`image-size-next@1.2.2`** (npm dist-tag **`legacy`**, **not** `latest`). Metro **0.84.5 / 0.83.8** vendored parsers and dropped the dependency; older Metro on npm still needs the 1.x override. Do **not** point Metro at `2.1.1`.
 
 - Compare vs upstream 1.2.1: https://github.com/lcf2212dev/image-size-next/compare/v1.2.1...v1.2.2
 - Install: `npm i image-size-next@1.2.2` or `npm i image-size-next@legacy`
@@ -90,9 +90,23 @@ pnpm add image-size-next
 
 ### Force transitive dependency replacement
 
-When **other packages** in your project depend on vulnerable `image-size` (you do not import it yourself), force every resolution of `image-size` to this fork. The public API matches, so nested dependencies keep working without code changes.
+When **other packages** in your project depend on vulnerable `image-size` (you do not import it yourself), force every resolution of `image-size` to this fork. The public API matches **within the same major**, so nested dependencies keep working without code changes.
+
+**Pick the major your tree already uses.** Metro, React Native, and anything on `image-size@^1` / `1.2.1` must pin **`image-size-next@1.2.2`** (`legacy`). Do **not** override those trees to `2.1.1` (v2 dropped the sync API). v2 trees pin **`2.1.1`**.
 
 Add the block below to the **root** `package.json`, then reinstall.
+
+1.x / Metro:
+
+```json
+{
+  "overrides": {
+    "image-size": "npm:image-size-next@1.2.2"
+  }
+}
+```
+
+2.x:
 
 #### npm (8.3+)
 

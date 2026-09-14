@@ -2,6 +2,21 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2] - 2026-08-14
+
+1.x / Metro line (`legacy` dist-tag). Not a 2.x release.
+
+### Security
+
+- Backport of CVE-2025-71329 / CVE-2025-71330 DoS fixes to the **1.x** API (`image-size@1.2.1` drop-in, CJS sync).
+- Compare: https://github.com/lcf2212dev/image-size-next/compare/v1.2.1...v1.2.2
+
+### Notes
+
+- Install: `npm i image-size-next@1.2.2` or `npm i image-size-next@legacy`.
+- Override: `"image-size": "npm:image-size-next@1.2.2"`.
+- Do **not** use `2.1.x` on Metro / React Native trees.
+
 ## [2.1.1] - 2026-08-11
 
 ### Security

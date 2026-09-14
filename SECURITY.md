@@ -4,7 +4,10 @@
 
 | Version | Supported |
 | ------- | --------- |
-| 2.1.x   | Yes       |
+| 2.1.x   | Yes (`latest`) |
+| 1.2.2   | Yes (`legacy` — Metro / image-size 1.x API) |
+| 2.0.x and earlier | No (upstream) |
+| 1.2.1 and earlier | No (upstream) |
 
 ## Reporting a Vulnerability
 
@@ -30,8 +33,10 @@ This fork specifically addresses denial-of-service conditions present in `image-
 
 | ID | Summary | Fixed in |
 | -- | ------- | -------- |
-| CVE-2025-71329 | Infinite loop on zero-size JXL/HEIF/JP2 boxes | 2.1.0 |
-| CVE-2025-71330 | Infinite loop on zero-length ICNS entries | 2.1.0 |
+| CVE-2025-71329 | Infinite loop on zero-size JXL/HEIF/JP2 boxes | 2.1.0 (2.x) and 1.2.2 (1.x / Metro) |
+| CVE-2025-71330 | Infinite loop on zero-length ICNS entries | 2.1.0 (2.x) and 1.2.2 (1.x / Metro) |
+
+Upstream `image-size@1.2.1` and `image-size@2.0.2` both remain affected. Do not replace a 1.x tree with 2.x.
 
 Related historical advisory on the original package: [GHSA-m5qc-5hw7-8vg7](https://github.com/advisories/GHSA-m5qc-5hw7-8vg7) (partially fixed upstream in 2.0.2; residual issues remain there).
 

@@ -11,4 +11,6 @@ coverage/
 .env
 .env.local
 .env.*.local
-campaign/
+campaign/data/
+campaign/.env
+campaign/scripts/__pycache__/
