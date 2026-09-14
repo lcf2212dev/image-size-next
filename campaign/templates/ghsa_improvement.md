@@ -1,5 +1,7 @@
 # Suggested GHSA notes (English, factual)
 
+GitHub Advisory Database accepts **one advisory per PR**. Open two PRs (or use “Suggest improvements” twice), not a combined diff.
+
 Submit via “Suggest improvements for this vulnerability” on:
 
 - https://github.com/advisories/GHSA-5p2g-fcmc-qvqq
