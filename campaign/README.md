@@ -109,6 +109,7 @@ python3 campaign/scripts/metrics.py
 - `run_outreach_wave.py` defaults to dry-run and `workers=1`; refuses `--execute` with `workers>1`.
 - No exploit PoCs; not affiliated with original maintainer.
 - `campaign/` is not included in npm `files` — never published.
+- **Verified commits:** every campaign commit must be SSH-signed as `lcf2212dev` (`campaign/scripts/git-commit-signed.sh`). Unsigned `git commit` is not allowed on fork PRs.
 
 ## Dual line
 
