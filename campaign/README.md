@@ -112,6 +112,7 @@ python3 campaign/scripts/metrics.py
 - **Verified commits:** every campaign commit must be SSH-signed as `lcf2212dev` (`campaign/scripts/git-commit-signed.sh`). Unsigned `git commit` is not allowed on fork PRs.
 - **Fork cleanup:** when a campaign PR is **merged or closed**, delete the `lcf2212dev/<fork>` (`campaign/scripts/cleanup_closed_forks.py --execute`). Keep the fork while the PR is OPEN. Never delete `image-size-next`. Needs `gh` scope `delete_repo`.
 - **Stale bump:** after **7 days** with no human reply, if the repo **owner is a User** (not an Organization), post `campaign/templates/bump.md` once (`campaign/scripts/bump_stale_prs.py --execute`).
+- **Stale close:** after **14 days** still OPEN, close the PR (`campaign/scripts/close_stale_prs.py --execute`, comment in `templates/close.md`) and delete the fork. Never close `github/advisory-database` or `lcf2212dev/image-size-next`.
 
 ## Dual line
 
